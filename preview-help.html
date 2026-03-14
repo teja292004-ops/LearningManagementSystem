@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillBloom — Help & Support</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>tailwind.config={theme:{extend:{colors:{primary:{50:'#f5f3ff',100:'#ede9fe',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9'}},fontFamily:{sans:['Inter','sans-serif']}}}}</script>
+  <style>body{font-family:'Inter',sans-serif;} details summary{cursor:pointer;list-style:none;} details summary::-webkit-details-marker{display:none;} details[open] .chevron{transform:rotate(180deg);}</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<script>
+  var __cu=localStorage.getItem('sb_current_user');
+  if(!__cu){window.location.replace('preview-login.html');}
+  var __user=__cu?JSON.parse(__cu):{name:'Student',email:''};
+  var __firstName=__user.name?__user.name.split(' ')[0]:'Student';
+  var __initial=__firstName.charAt(0).toUpperCase();
+</script>
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 flex items-center h-16 gap-4">
+    <a href="preview-home.html" class="flex items-center gap-2"><div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><span class="font-bold text-xl text-primary-700">SkillBloom</span></a>
+    <div class="ml-auto flex items-center gap-2"><div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center"><span id="nav-initial" class="text-primary-700 font-semibold text-xs">S</span></div><span id="nav-name" class="text-sm font-medium text-gray-700">Student</span></div>
+  </div>
+</nav>
+<div class="bg-gradient-to-r from-primary-700 to-indigo-700 text-white py-8 px-4">
+  <div class="max-w-7xl mx-auto"><p class="text-primary-200 text-sm mb-1"><a href="preview-dashboard.html" class="hover:underline">Dashboard</a> / Help &amp; Support</p><h1 class="text-2xl font-bold">Help &amp; Support</h1><p class="text-primary-200 text-sm mt-1">Find answers or contact our support team</p></div>
+</div>
+<div class="max-w-7xl mx-auto px-4 py-8 flex gap-6">
+  <aside class="w-56 shrink-0">
+    <nav class="bg-white rounded-xl border border-gray-100 p-3 sticky top-20">
+      <ul class="space-y-0.5">
+        <li><a href="preview-dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>Dashboard</a></li>
+        <li><a href="preview-my-learning.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>My Learning</a></li>
+        <li><a href="preview-exam.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>Exam</a></li>
+        <li><a href="preview-wishlist.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>Wishlist</a></li>
+        <li><a href="preview-cart.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>Cart</a></li>
+        <li><a href="preview-profile.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Profile Settings</a></li>
+        <li><a href="preview-help.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm bg-primary-600 text-white font-medium"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Help &amp; Support</a></li>
+        <li><a href="preview-notifications.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>Notifications <span class="ml-auto bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span></a></li>
+        <li><a href="preview-login.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-red-500 hover:bg-red-50"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="flex-1 min-w-0 space-y-6">
+    <!-- FAQ -->
+    <div class="bg-white rounded-2xl border border-gray-100 p-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-5">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="border border-gray-100 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-gray-800 hover:bg-gray-50">How do I access my enrolled courses?<svg class="chevron w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="px-5 pb-4 text-sm text-gray-600">Go to <a href="preview-my-learning.html" class="text-primary-600 hover:underline">My Learning</a> from the sidebar. All your enrolled courses will appear there with progress tracking.</div>
+        </details>
+        <details class="border border-gray-100 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-gray-800 hover:bg-gray-50">How do I get a refund?<svg class="chevron w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="px-5 pb-4 text-sm text-gray-600">We offer a 30-day money-back guarantee. Contact support within 30 days of purchase and we'll process your refund within 5-7 business days.</div>
+        </details>
+        <details class="border border-gray-100 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-gray-800 hover:bg-gray-50">Can I download course videos?<svg class="chevron w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="px-5 pb-4 text-sm text-gray-600">Course videos are streamed via YouTube. You can watch them anytime online. Offline downloads are not currently supported.</div>
+        </details>
+        <details class="border border-gray-100 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-gray-800 hover:bg-gray-50">How do I get my certificate?<svg class="chevron w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="px-5 pb-4 text-sm text-gray-600">Complete all lessons and pass the final exam with 70% or above. Your certificate will be automatically generated and available in My Learning.</div>
+        </details>
+        <details class="border border-gray-100 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-gray-800 hover:bg-gray-50">What is TutorAI?<svg class="chevron w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="px-5 pb-4 text-sm text-gray-600">TutorAI is your personal AI learning assistant. Click the chat bubble in the bottom-right corner to ask questions about your courses, get explanations, or get study tips.</div>
+        </details>
+      </div>
+    </div>
+    <!-- Contact Support -->
+    <div class="bg-white rounded-2xl border border-gray-100 p-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-5">Contact Support</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="border border-gray-100 rounded-xl p-4 text-center hover:border-primary-300 hover:bg-primary-50 transition-colors cursor-pointer">
+          <div class="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></div>
+          <p class="font-semibold text-sm text-gray-900">Live Chat</p><p class="text-xs text-gray-500 mt-0.5">Avg. reply: 2 min</p>
+        </div>
+        <div class="border border-gray-100 rounded-xl p-4 text-center hover:border-primary-300 hover:bg-primary-50 transition-colors cursor-pointer">
+          <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+          <p class="font-semibold text-sm text-gray-900">Email</p><p class="text-xs text-gray-500 mt-0.5">support@skillbloom.com</p>
+        </div>
+        <div class="border border-gray-100 rounded-xl p-4 text-center hover:border-primary-300 hover:bg-primary-50 transition-colors cursor-pointer">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-2"><svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+          <p class="font-semibold text-sm text-gray-900">Phone</p><p class="text-xs text-gray-500 mt-0.5">+91 1800-123-4567</p>
+        </div>
+      </div>
+      <form onsubmit="submitTicket(event)" class="space-y-4">
+        <div><label class="block text-sm font-medium text-gray-700 mb-1">Subject</label><input type="text" placeholder="Describe your issue briefly" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500" /></div>
+        <div><label class="block text-sm font-medium text-gray-700 mb-1">Message</label><textarea rows="4" placeholder="Provide more details about your issue..." class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"></textarea></div>
+        <button type="submit" class="bg-primary-600 text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-primary-700">Submit Ticket</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-xl shadow-lg z-50">✓ Support ticket submitted! We'll reply within 24 hours.</div>
+<script>
+function submitTicket(e) {
+  e.preventDefault();
+  const t = document.getElementById('toast');
+  t.classList.remove('hidden');
+  setTimeout(()=>t.classList.add('hidden'), 3000);
+}
+document.getElementById('nav-initial').textContent=__initial;
+document.getElementById('nav-name').textContent=__firstName;
+</script>
+</body>
+</html>

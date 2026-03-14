@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "outputDirectory": "client",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ]
+}

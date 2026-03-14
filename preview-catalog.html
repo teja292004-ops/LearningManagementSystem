@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillBloom — Course Catalog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' } },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body{font-family:'Inter',sans-serif;}
+    .card-hover{transition:all 0.2s;} .card-hover:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(124,58,237,0.13);}
+  </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 flex items-center h-16 gap-4">
+    <a href="preview-home.html" class="flex items-center gap-2 shrink-0">
+      <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+      </div>
+      <span class="font-bold text-xl text-primary-700">SkillBloom</span>
+    </a>
+    <div class="flex-1 max-w-xl hidden md:flex">
+      <div class="relative w-full">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input id="search-input" type="text" placeholder="Search courses..." oninput="filterCourses()" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary-500" />
+      </div>
+    </div>
+    <div class="ml-auto flex items-center gap-3">
+      <a href="preview-login.html" class="text-sm font-medium text-gray-700 hover:text-primary-600">Sign In</a>
+      <a href="preview-signup.html" class="bg-primary-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-primary-700">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="bg-gradient-to-r from-primary-700 to-indigo-700 text-white py-10 px-4">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-extrabold mb-2">Explore All Courses</h1>
+    <p class="text-primary-200 text-sm">200+ courses across Web Dev, Data Science, Design, Cloud & more</p>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 py-8 flex gap-6">
+
+  <!-- Sidebar Filters -->
+  <aside class="w-56 shrink-0 hidden md:block">
+    <div class="bg-white rounded-xl border border-gray-100 p-4 sticky top-20">
+      <h3 class="font-bold text-gray-900 mb-3 text-sm">Category</h3>
+      <ul class="space-y-1 text-sm mb-5" id="category-list">
+        <li><button onclick="setCategory('all')" class="cat-btn w-full text-left px-3 py-2 rounded-lg bg-primary-600 text-white font-medium" data-cat="all">All Courses</button></li>
+        <li><button onclick="setCategory('web')" class="cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50" data-cat="web">Web Development</button></li>
+        <li><button onclick="setCategory('data')" class="cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50" data-cat="data">Data Science</button></li>
+        <li><button onclick="setCategory('design')" class="cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50" data-cat="design">UI/UX Design</button></li>
+        <li><button onclick="setCategory('cloud')" class="cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50" data-cat="cloud">Cloud & DevOps</button></li>
+        <li><button onclick="setCategory('mobile')" class="cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50" data-cat="mobile">Mobile Dev</button></li>
+        <li><button onclick="setCategory('ai')" class="cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50" data-cat="ai">AI / ML</button></li>
+        <li><button onclick="setCategory('cyber')" class="cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50" data-cat="cyber">Cybersecurity</button></li>
+      </ul>
+      <h3 class="font-bold text-gray-900 mb-3 text-sm">Price</h3>
+      <ul class="space-y-1 text-sm mb-5">
+        <li><label class="flex items-center gap-2 px-3 py-2 cursor-pointer"><input type="checkbox" id="filter-free" onchange="filterCourses()" class="accent-primary-600" /> Free</label></li>
+        <li><label class="flex items-center gap-2 px-3 py-2 cursor-pointer"><input type="checkbox" id="filter-paid" onchange="filterCourses()" class="accent-primary-600" /> Paid</label></li>
+      </ul>
+      <h3 class="font-bold text-gray-900 mb-3 text-sm">Rating</h3>
+      <ul class="space-y-1 text-sm">
+        <li><label class="flex items-center gap-2 px-3 py-2 cursor-pointer"><input type="radio" name="rating" value="4.5" onchange="filterCourses()" class="accent-primary-600" /> 4.5 & up</label></li>
+        <li><label class="flex items-center gap-2 px-3 py-2 cursor-pointer"><input type="radio" name="rating" value="4.0" onchange="filterCourses()" class="accent-primary-600" /> 4.0 & up</label></li>
+        <li><label class="flex items-center gap-2 px-3 py-2 cursor-pointer"><input type="radio" name="rating" value="0" onchange="filterCourses()" class="accent-primary-600" checked /> Any</label></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Course Grid -->
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center justify-between mb-5">
+      <p id="result-count" class="text-sm text-gray-500">Showing 24 courses</p>
+      <select onchange="sortCourses(this.value)" class="text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500">
+        <option value="popular">Most Popular</option>
+        <option value="newest">Newest</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating">Highest Rated</option>
+      </select>
+    </div>
+
+    <div id="course-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    <p id="no-results" class="hidden text-center text-gray-400 py-16 text-sm">No courses found. Try a different search or filter.</p>
+  </div>
+</div>
+
+<script>
+const courses = [
+  // Web Development
+  { id:1,  title:'Complete JavaScript Bootcamp 2024', instructor:'Vikram Nair', category:'web', rating:4.8, reviews:2300, price:0, lessons:12, hours:18, color:'from-purple-500 to-indigo-600', badge:'Free' },
+  { id:2,  title:'React & TypeScript Masterclass', instructor:'Ananya Krishnan', category:'web', rating:4.7, reviews:1800, price:4199, lessons:16, hours:24, color:'from-blue-500 to-cyan-600', badge:'Bestseller' },
+  { id:3,  title:'Advanced CSS & Animations', instructor:'Deepa Menon', category:'web', rating:4.5, reviews:890, price:2499, lessons:10, hours:14, color:'from-violet-500 to-purple-600', badge:'' },
+  { id:4,  title:'Node.js & Express Backend', instructor:'Suresh Iyer', category:'web', rating:4.6, reviews:1400, price:3799, lessons:14, hours:20, color:'from-green-600 to-emerald-700', badge:'' },
+  { id:5,  title:'Full Stack Web Development', instructor:'Vikram Nair', category:'web', rating:4.9, reviews:3200, price:7999, lessons:40, hours:60, color:'from-indigo-500 to-blue-700', badge:'Bestseller' },
+  { id:6,  title:'HTML & CSS for Beginners', instructor:'Meera Pillai', category:'web', rating:4.4, reviews:2100, price:0, lessons:8, hours:10, color:'from-orange-400 to-red-500', badge:'Free' },
+  // Data Science
+  { id:7,  title:'Python for Data Science', instructor:'Dr. Kavitha Rao', category:'data', rating:4.9, reviews:3100, price:0, lessons:10, hours:15, color:'from-green-500 to-teal-600', badge:'Free' },
+  { id:8,  title:'Machine Learning A-Z', instructor:'Dr. Arjun Bose', category:'data', rating:4.8, reviews:4200, price:6799, lessons:22, hours:40, color:'from-red-500 to-orange-600', badge:'Bestseller' },
+  { id:9,  title:'Data Visualization with Python', instructor:'Dr. Kavitha Rao', category:'data', rating:4.6, reviews:980, price:3999, lessons:12, hours:18, color:'from-emerald-500 to-green-600', badge:'' },
+  { id:10, title:'SQL & Database Design', instructor:'Ravi Shankar', category:'data', rating:4.5, reviews:1600, price:2999, lessons:10, hours:14, color:'from-cyan-500 to-blue-600', badge:'' },
+  { id:11, title:'Statistics for Data Science', instructor:'Dr. Arjun Bose', category:'data', rating:4.7, reviews:1200, price:3499, lessons:14, hours:20, color:'from-teal-500 to-green-700', badge:'New' },
+  // UI/UX Design
+  { id:12, title:'UI/UX Design Fundamentals', instructor:'Priya Nambiar', category:'design', rating:4.6, reviews:987, price:3399, lessons:12, hours:16, color:'from-pink-500 to-rose-600', badge:'' },
+  { id:13, title:'Figma UI Design Masterclass', instructor:'Priya Nambiar', category:'design', rating:4.7, reviews:1100, price:2999, lessons:14, hours:18, color:'from-fuchsia-500 to-pink-600', badge:'New' },
+  { id:14, title:'Product Design with Figma', instructor:'Sneha Kulkarni', category:'design', rating:4.5, reviews:760, price:4499, lessons:16, hours:22, color:'from-rose-500 to-pink-700', badge:'' },
+  { id:15, title:'Motion Design & Micro-interactions', instructor:'Sneha Kulkarni', category:'design', rating:4.4, reviews:540, price:3199, lessons:10, hours:12, color:'from-purple-400 to-pink-500', badge:'' },
+  // Cloud & DevOps
+  { id:16, title:'AWS Cloud Practitioner', instructor:'Karthik Reddy', category:'cloud', rating:4.8, reviews:2100, price:5799, lessons:18, hours:28, color:'from-orange-500 to-amber-600', badge:'Bestseller' },
+  { id:17, title:'Docker & Kubernetes Basics', instructor:'Karthik Reddy', category:'cloud', rating:4.6, reviews:1200, price:0, lessons:10, hours:14, color:'from-teal-500 to-cyan-600', badge:'Free' },
+  { id:18, title:'DevOps with CI/CD Pipelines', instructor:'Suresh Iyer', category:'cloud', rating:4.7, reviews:890, price:5299, lessons:16, hours:24, color:'from-blue-600 to-indigo-700', badge:'' },
+  { id:19, title:'Terraform & Infrastructure as Code', instructor:'Karthik Reddy', category:'cloud', rating:4.5, reviews:670, price:4799, lessons:12, hours:18, color:'from-violet-600 to-purple-700', badge:'New' },
+  // Mobile Dev
+  { id:20, title:'Flutter Mobile Development', instructor:'Rahul Gupta', category:'mobile', rating:4.7, reviews:1500, price:5499, lessons:18, hours:30, color:'from-sky-500 to-blue-600', badge:'New' },
+  { id:21, title:'iOS App Development with Swift', instructor:'Nikhil Joshi', category:'mobile', rating:4.5, reviews:756, price:4999, lessons:14, hours:22, color:'from-yellow-500 to-orange-500', badge:'' },
+  { id:22, title:'Android Development with Kotlin', instructor:'Rahul Gupta', category:'mobile', rating:4.6, reviews:1100, price:4599, lessons:16, hours:26, color:'from-green-500 to-lime-600', badge:'' },
+  // AI / ML
+  { id:23, title:'Deep Learning with TensorFlow', instructor:'Dr. Arjun Bose', category:'ai', rating:4.8, reviews:2800, price:7499, lessons:24, hours:45, color:'from-red-600 to-rose-700', badge:'Bestseller' },
+  { id:24, title:'Natural Language Processing', instructor:'Dr. Kavitha Rao', category:'ai', rating:4.7, reviews:1300, price:6299, lessons:18, hours:32, color:'from-amber-500 to-orange-600', badge:'' },
+  { id:25, title:'Computer Vision with OpenCV', instructor:'Dr. Arjun Bose', category:'ai', rating:4.6, reviews:980, price:5999, lessons:16, hours:28, color:'from-purple-600 to-indigo-700', badge:'New' },
+  { id:26, title:'Generative AI & Prompt Engineering', instructor:'Vikram Nair', category:'ai', rating:4.9, reviews:3500, price:0, lessons:8, hours:10, color:'from-pink-600 to-purple-700', badge:'Free' },
+  // Cybersecurity
+  { id:27, title:'Ethical Hacking Bootcamp', instructor:'Nikhil Joshi', category:'cyber', rating:4.8, reviews:2200, price:6499, lessons:20, hours:36, color:'from-gray-700 to-gray-900', badge:'Bestseller' },
+  { id:28, title:'Network Security Fundamentals', instructor:'Nikhil Joshi', category:'cyber', rating:4.6, reviews:890, price:4299, lessons:14, hours:20, color:'from-slate-600 to-gray-700', badge:'' },
+  { id:29, title:'Web Application Security', instructor:'Suresh Iyer', category:'cyber', rating:4.7, reviews:1100, price:5199, lessons:16, hours:24, color:'from-zinc-600 to-slate-700', badge:'New' },
+];
+
+let activeCategory = 'all';
+let currentSort = 'popular';
+
+function stars(r) {
+  let s = '';
+  for(let i=1;i<=5;i++) s += `<span class="${i<=Math.round(r)?'text-yellow-400':'text-gray-300'}">★</span>`;
+  return s;
+}
+
+function renderCard(c) {
+  const priceHtml = c.price === 0
+    ? `<span class="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">Free</span>`
+    : `<span class="font-bold text-gray-900">₹${c.price.toLocaleString('en-IN')}</span>`;
+  const badgeHtml = c.badge ? `<span class="absolute top-3 left-3 ${c.badge==='Free'?'bg-green-500':c.badge==='Bestseller'?'bg-orange-500':'bg-blue-600'} text-white text-xs font-bold px-2 py-0.5 rounded-full">${c.badge}</span>` : '';
+  return `
+    <a href="preview-course-detail.html" class="card-hover block bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+      <div class="h-36 bg-gradient-to-br ${c.color} flex items-center justify-center relative">
+        <svg class="w-10 h-10 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        ${badgeHtml}
+      </div>
+      <div class="p-4">
+        <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-1">${c.title}</h3>
+        <p class="text-xs text-gray-500 mb-2">${c.instructor}</p>
+        <div class="flex items-center gap-1 mb-1">${stars(c.rating)}<span class="text-xs text-gray-500 ml-1">${c.rating} (${c.reviews >= 1000 ? (c.reviews/1000).toFixed(1)+'k' : c.reviews})</span></div>
+        <p class="text-xs text-gray-400 mb-3">${c.lessons} lessons · ${c.hours}h total</p>
+        <div class="flex items-center justify-between">${priceHtml}<span class="text-xs text-primary-600 font-medium">View Course →</span></div>
+      </div>
+    </a>`;
+}
+
+function getFiltered() {
+  const search = (document.getElementById('search-input').value || '').toLowerCase();
+  const filterFree = document.getElementById('filter-free').checked;
+  const filterPaid = document.getElementById('filter-paid').checked;
+  const ratingEl = document.querySelector('input[name="rating"]:checked');
+  const ratingVal = ratingEl ? parseFloat(ratingEl.value) : 0;
+
+  return courses.filter(c => {
+    if (activeCategory !== 'all' && c.category !== activeCategory) return false;
+    if (search && !c.title.toLowerCase().includes(search) && !c.instructor.toLowerCase().includes(search)) return false;
+    if (filterFree && !filterPaid && c.price !== 0) return false;
+    if (filterPaid && !filterFree && c.price === 0) return false;
+    if (c.rating < ratingVal) return false;
+    return true;
+  });
+}
+
+function filterCourses() {
+  let filtered = getFiltered();
+  applySortToArray(filtered, currentSort);
+  const grid = document.getElementById('course-grid');
+  const noRes = document.getElementById('no-results');
+  document.getElementById('result-count').textContent = `Showing ${filtered.length} course${filtered.length!==1?'s':''}`;
+  if (filtered.length === 0) { grid.innerHTML=''; noRes.classList.remove('hidden'); }
+  else { noRes.classList.add('hidden'); grid.innerHTML = filtered.map(renderCard).join(''); }
+}
+
+function applySortToArray(arr, val) {
+  if (val==='price-low') arr.sort((a,b)=>a.price-b.price);
+  else if (val==='price-high') arr.sort((a,b)=>b.price-a.price);
+  else if (val==='rating') arr.sort((a,b)=>b.rating-a.rating);
+  else if (val==='newest') arr.sort((a,b)=>b.id-a.id);
+  else arr.sort((a,b)=>b.reviews-a.reviews);
+}
+
+function setCategory(cat) {
+  activeCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.className = b.dataset.cat === cat
+      ? 'cat-btn w-full text-left px-3 py-2 rounded-lg bg-primary-600 text-white font-medium'
+      : 'cat-btn w-full text-left px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50';
+  });
+  filterCourses();
+}
+
+function sortCourses(val) {
+  currentSort = val;
+  filterCourses();
+}
+
+window.addEventListener('DOMContentLoaded', filterCourses);
+</script>
+</body>
+</html>
